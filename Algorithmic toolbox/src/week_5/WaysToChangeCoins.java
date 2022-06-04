@@ -18,20 +18,20 @@ public class WaysToChangeCoins {
 		System.out.println("Enter the change: ");
 		change = sc.nextInt();
 		
-		int[][] ans = new int[coins.length][change];
-		for (int i = 0; i < coins.length; i++) {
+		int[][] ans = new int[coins.length + 1][change + 1];
+		for (int i = 1; i < coins.length; i++) {
 			ans[i][0] = 1;
 		}
-		for (int i = 0; i < coins.length; i++) {
-			for (int j = 0; j < change; j++) {
-				if (coins[i] > j) {
+		for (int i = 1; i <= coins.length; i++) {
+			for (int j = 1; j <= change; j++) {
+				if (coins[i - 1] > j) {
 					ans[i][j] = ans[i-1][j];
 				}else {
-					ans[i][j] = ans[i][j-coins[i]];
+					ans[i][j] = ans[i-1][j] + ans[i][j-coins[i - 1]];
 				}
 			}
 		}
-		System.out.println(ans[coins.length-1][change-1]);
+		System.out.println(ans[coins.length][change]);
 	}
 
 }
