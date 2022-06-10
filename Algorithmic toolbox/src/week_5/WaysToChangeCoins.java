@@ -19,7 +19,7 @@ public class WaysToChangeCoins {
 		change = sc.nextInt();
 		
 		int[][] ans = new int[coins.length + 1][change + 1];
-		for (int i = 1; i < coins.length; i++) {
+		for (int i = 0; i <= coins.length; i++) {
 			ans[i][0] = 1;
 		}
 		for (int i = 1; i <= coins.length; i++) {
